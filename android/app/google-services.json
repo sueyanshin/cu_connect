@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99513116167",
+    "project_id": "cu-connect-b6ffc",
+    "storage_bucket": "cu-connect-b6ffc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99513116167:android:739b7fa460288d55726ca2",
+        "android_client_info": {
+          "package_name": "com.example.cu_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6Mgy-detaq7tDFlFNLC5s04w3cZNgEac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
