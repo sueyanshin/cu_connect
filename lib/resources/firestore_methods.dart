@@ -124,4 +124,33 @@ class FireStoreMethods {
       if (kDebugMode) print(e.toString());
     }
   }
+
+  Future<String> updatePost(String postId, String description, Uint8List file,
+      String profImage) async {
+    String res = "Some error occurred";
+    try {
+      // Check if a new image file is provided
+      if (file != null) {
+        // Upload the new image to storage
+        String photoUrl =
+            await StorageMethods().uploadImageToStorage('posts', file, true);
+
+        // Update the post with the new description and photo URL
+        await _firestore.collection('posts').doc(postId).update({
+          'description': description,
+          'postUrl': photoUrl,
+          'profImage': profImage,
+        });
+      } else {
+        // If no new image file is provided, only update the description
+        await _firestore.collection('posts').doc(postId).update({
+          'description': description,
+        });
+      }
+      res = "success";
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
 }

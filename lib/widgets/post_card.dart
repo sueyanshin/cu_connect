@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cu_connect/screens/edit_post_screen.dart';
 import 'package:cu_connect/screens/profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -197,6 +198,7 @@ class _PostCardState extends State<PostCard> {
                                             vertical: 16),
                                         shrinkWrap: true,
                                         children: [
+                                          'Edit',
                                           'Delete',
                                         ]
                                             .map(
@@ -209,14 +211,29 @@ class _PostCardState extends State<PostCard> {
                                                     child: Text(e),
                                                   ),
                                                   onTap: () {
-                                                    deletePost(
-                                                      widget.snap['postId']
-                                                          .toString(),
-                                                    );
-                                                    // remove the dialog box
-                                                    Navigator.of(context).pop();
-                                                    showSnackBar(context,
-                                                        'Deleted your post!');
+                                                    if (e == "Edit") {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      Navigator.of(context)
+                                                          .push(
+                                                              MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            EditPostScreen(
+                                                                snap: widget
+                                                                    .snap),
+                                                      ));
+                                                    }
+                                                    if (e == "Delete") {
+                                                      deletePost(
+                                                        widget.snap['postId']
+                                                            .toString(),
+                                                      );
+                                                      // remove the dialog box
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      showSnackBar(context,
+                                                          'Deleted your post!');
+                                                    }
                                                   }),
                                             )
                                             .toList()),
