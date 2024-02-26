@@ -126,6 +126,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
     setState(() {
       _file = null;
     });
+    Navigator.of(context).pop();
   }
 
   @override
